@@ -1,0 +1,24 @@
+{
+  "name": "testes-e2e-cypress",
+  "version": "1.0.0",
+  "description": "Testes  E2E com Cypress - Curso Walmyr Filho",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint cypress/**/*.js",
+    "lint:fix": "eslint cypress/**/*.js --fix"
+  },
+  "author": "NATHÁLIA CAPELA",
+  "license": "ISC",
+  "devDependencies": {
+    "@bahmutov/cy-api": "^1.5.0",
+    "cypress": "^9.7.0",
+    "cypress-mailosaur": "^2.3.3",
+    "cypress-multi-reporters": "^1.5.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-react": "^7.26.1",
+    "faker": "^5.5.3",
+    "mocha-junit-reporter": "^2.0.0"
+  }
+}

@@ -13,6 +13,7 @@
   "devDependencies": {
     "@bahmutov/cy-api": "^1.5.0",
     "cypress": "^9.7.0",
+    "cypress-file-upload": "^5.0.8",
     "cypress-mailosaur": "^2.3.3",
     "cypress-multi-reporters": "^1.5.0",
     "eslint": "^7.32.0",

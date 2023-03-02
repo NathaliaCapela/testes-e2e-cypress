@@ -1,12 +1,12 @@
 
 Cypress.Commands.add('fillSignupFormAndSubmit', (email, password) => {
-    cy.visit('/signup')
-    cy.get('#email').type(email)
-    cy.get('#password').type(password, { log: false })
-    cy.get('#confirmPassword').type(password, { log: false })
-    cy.contains('button', 'Signup').click()
-    cy.get('#confirmationCode').should('be.visible')
-  })
+  cy.visit('/signup')
+  cy.get('#email').type(email)
+  cy.get('#password').type(password, { log: false })
+  cy.get('#confirmPassword').type(password, { log: false })
+  cy.contains('button', 'Signup').click()
+  cy.get('#confirmationCode').should('be.visible')
+})
 
 
 
@@ -20,6 +20,7 @@ Cypress.Commands.add('login', (
     cy.get('#email').type(username)
     cy.get('#password').type(password, { log: false })
     cy.contains('button', 'Login').click()
+    cy.wait(3000)
     cy.contains('h1', 'Your Notes').should('be.visible')
   }
 
@@ -42,13 +43,13 @@ Cypress.Commands.add('createNote', (note, attachFile = false) => {
 
   cy.contains('button', 'Create').click()
 
-  cy.contains('.list-group-item', note).should('be.visible')
+  cy.contains('.list-group-item-heading', note).should('be.visible')
 })
 
 Cypress.Commands.add('editNote', (note, newValue, attachFile = false) => {
   cy.intercept('GET', '**/notes/**').as('getNote')
 
-  cy.contains('.list-group-item', note).click()
+  cy.contains('.list-group-item-heading', note).click()
   cy.wait('@getNote')
 
   cy.get('#content')
@@ -62,7 +63,8 @@ Cypress.Commands.add('editNote', (note, newValue, attachFile = false) => {
   cy.contains('button', 'Save').click()
 
   cy.contains('.list-group-item', note).should('not.exist')
-  cy.contains('.list-group-item', newValue).should('be.visible')
+  cy.wait(1500)
+  cy.contains('.list-group-item-heading', newValue).should('be.visible')
 })
 
 Cypress.Commands.add('deleteNote', note => {
@@ -70,4 +72,25 @@ Cypress.Commands.add('deleteNote', note => {
   cy.contains('button', 'Delete').click()
 
   cy.contains('.list-group-item', note).should('not.exist')
+})
+
+
+Cypress.Commands.add('fillSettingsFormAndSubmit', () => {
+  cy.visit('/settings')
+  cy.get('#storage').type('1')
+  cy.get('#name').type('Mary Doe')
+  cy.iframe('.card-field iframe')
+    .as('iframe')
+    .find('[name="cardnumber"]')
+    .type('4242424242424242')
+  cy.get('@iframe')
+    .find('[name="exp-date"]')
+    .type('1271')
+  cy.get('@iframe')
+    .find('[name="cvc"]')
+    .type('123')
+  cy.get('@iframe')
+    .find('[name="postal"]')
+    .type('12345')
+  cy.contains('button', 'Purchase').click()
 })

@@ -1,7 +1,7 @@
 {
   "name": "testes-e2e-cypress",
   "version": "1.0.0",
-  "description": "Testes  E2E com Cypress - Curso Walmyr Filho",
+  "description": "Sample project to demonstrate e2e tests written with Cypress running on GitHub Actions",
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^9.4.0",
+    "cypress-dark": "^1.8.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1",
     "cypress-mailosaur": "^2.3.3",

@@ -43,4 +43,4 @@ Run `npm run cy:open:tablet` to open the Cypress Test Runner to run tests in int
 
 ___
 
-Made with ❤️ by [your-name-here](https://github.com/NathaliaCapela).
+Made with ❤️ by [Nathália Capela](https://github.com/NathaliaCapela).
